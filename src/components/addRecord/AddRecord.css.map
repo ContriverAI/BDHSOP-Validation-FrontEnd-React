@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,oBAAoB,CAAA;EAChB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,KAAK;EACb,gBAAgB,EAAE,YAAY;CACjC",
+    "sources": [
+        "AddRecord.scss"
+    ],
+    "names": [],
+    "file": "AddRecord.css"
+}

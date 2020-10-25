@@ -1,0 +1,40 @@
+.PopUp_container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // background-color: bisque;
+    .PopUp_container_box{
+        width: 60%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // border: 2px solid red;
+        .box{
+            display: flex;
+            width: 80%;
+                margin-top: -20px;
+
+            .btn{
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: auto;
+                padding: 0.6rem 1rem;
+                cursor: pointer;
+            }
+
+            
+
+
+        }
+        .components {
+            width: 100%;
+        }
+    }
+    
+}
