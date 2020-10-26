@@ -134,56 +134,57 @@ function ViewData(props) {
           <CircularProgress disableShrink />
         ) : (
           <TableContainer component={Paper}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-            >
-              <CSVLink
-                data={data.data}
-                style={{ color: "white", textDecoration: "none" }}
+            <div style={{ width: " 100%", display: "flex" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
               >
-                DOWNLOAD CSV
-              </CSVLink>
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              onClick={exportPDF}
-            >
-              DOWNLOAD PDF
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-            >
-              <ReactHTMLTableToExcel
-                id="test-table-xls-button"
-                className="download-table-xls-button"
-                table="table-to-xls"
-                filename="tablexls"
-                sheet="tablexls"
-                buttonText="DOWNLOAD XLS"
+                <CSVLink
+                  data={data.data}
+                  style={{ color: "white", textDecoration: "none" }}
+                >
+                  DOWNLOAD CSV
+                </CSVLink>
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                onClick={exportPDF}
+              >
+                DOWNLOAD PDF
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+              >
+                <ReactHTMLTableToExcel
+                  id="test-table-xls-button"
+                  className="download-table-xls-button"
+                  table="table-to-xls"
+                  filename="tablexls"
+                  sheet="tablexls"
+                  buttonText="DOWNLOAD XLS"
+                />
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+              >
+                COPY TO CLIPBOARD
+              </Button>
+              <TextField
+                style={{ marginBottom: "0.8rem", marginLeft: "25%" }}
+                id="standard"
+                label="Search"
+                width="60%"
+                onChange={(e) => setToSearch(e.target.value)}
+                autoComplete="off"
               />
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-            >
-              COPY TO CLIPBOARD
-            </Button>
-            <TextField
-              style={{ marginBottom: "0.8rem" }}
-              id="standard"
-              label="Search"
-              width="60%"
-              onChange={(e) => setToSearch(e.target.value)}
-              autoComplete="off"
-            />
-
+            </div>
             <Table
               className={classes.table}
               aria-label="simple table"

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
-
+import logo from "../../asset/logo.png";
 import Button from "@material-ui/core/Button";
 
 import { NavLink } from "react-router-dom";
@@ -27,63 +27,83 @@ function Navigation(props) {
     <div className={classes.root}>
       <AppBar
         position="static"
-        style={{ flexDirection: "row", padding: "1.2rem" }}
+        style={{
+          flexDirection: "row",
+          padding: "1.8rem",
+          alignItems: "center",
+        }}
       >
+        <img
+          src={logo}
+          alt="logo"
+          style={{ width: "10%", marginRight: "5rem" }}
+        />
         {auth.isLoggedIn && (
-          <div
-            style={{
-              width: "60%",
-              display: "flex",
-              alignItems: "center",
-              marginRight: "auto",
-            }}
-          >
-            <NavLink
-              exact
-              to="/add"
-              className={classes.link}
-              style={{ marginRight: "1.2rem", padding: "0.4rem 0.6rem" }}
-              activeClassName="nav-active"
+          <React.Fragment>
+            <div
+              style={{
+                width: "60%",
+                display: "flex",
+                alignItems: "center",
+                marginRight: "auto",
+              }}
             >
-              ADD RECORD
-            </NavLink>
+              <NavLink
+                exact
+                to="/add"
+                className={classes.link}
+                style={{ marginRight: "1.2rem", padding: "0.4rem 0.6rem" }}
+                activeClassName="nav-active"
+              >
+                ADD RECORD
+              </NavLink>
 
-            <NavLink
-              exact
-              // to="/view"
-              to="/"
-              className={classes.link}
-              style={{ marginRight: "1.2rem", padding: "0.4rem 0.6rem" }}
-              activeClassName="nav-active"
-            >
-              VIEW DATA
-            </NavLink>
+              <NavLink
+                exact
+                // to="/view"
+                to="/"
+                className={classes.link}
+                style={{ marginRight: "1.2rem", padding: "0.4rem 0.6rem" }}
+                activeClassName="nav-active"
+              >
+                VIEW DATA
+              </NavLink>
 
-            <NavLink
-              exact
-              to="/create"
-              className={classes.link}
-              style={{ marginRight: "1.2rem", padding: "0.4rem 0.6rem" }}
-              activeClassName="nav-active"
+              <NavLink
+                exact
+                to="/create"
+                className={classes.link}
+                style={{ marginRight: "1.2rem", padding: "0.4rem 0.6rem" }}
+                activeClassName="nav-active"
+              >
+                CREATE USER
+              </NavLink>
+              {/* </Typography> */}
+            </div>
+
+            <div
+              style={{
+                marginLeft: "auto",
+                display: "flex",
+                alignItems: "center",
+              }}
             >
-              CREATE USER
-            </NavLink>
-            {/* </Typography> */}
-          </div>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={auth.logout}
+              >
+                <NavLink
+                  exact
+                  to="/"
+                  style={{ color: "white", textDecoration: "none" }}
+                >
+                  LOG OUT
+                </NavLink>
+              </Button>
+            </div>
+          </React.Fragment>
         )}
-        <div
-          style={{ marginLeft: "auto", display: "flex", alignItems: "center" }}
-        >
-          <Button variant="contained" color="secondary" onClick={auth.logout}>
-            <NavLink
-              exact
-              to="/"
-              style={{ color: "white", textDecoration: "none" }}
-            >
-              LOG OUT
-            </NavLink>
-          </Button>
-        </div>
       </AppBar>
     </div>
   );
