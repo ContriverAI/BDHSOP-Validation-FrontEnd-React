@@ -21,6 +21,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { Event } from "@material-ui/icons";
 import axios from "axios";
 import AlertPop from "../../components/alert/AlertPop";
+import shop from "../../asset/shop.svg";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -109,10 +110,15 @@ function Home(props) {
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
-        height: "70vh",
+        height: "80vh",
       }}
     >
-      <Grid style={{ width: "50%" }}>
+    <Grid style={{ width: "60%",display: "flex",
+        justifyContent: "center",
+        alignItems: "center", }}>
+    <img src={shop} style={{ width: "80%" }}/>
+    </Grid>
+      <Grid style={{ width: "30%" }}>
         <Paper elevation={3}>
           <Typography
             variant="h5"

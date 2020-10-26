@@ -29,9 +29,10 @@ function Navigation(props) {
         position="static"
         style={{
           flexDirection: "row",
-          padding: "1.8rem",
+          padding: "0.8rem",
           alignItems: "center",
         }}
+        color="transparent"
       >
         <img
           src={logo}
@@ -52,7 +53,7 @@ function Navigation(props) {
                 exact
                 to="/add"
                 className={classes.link}
-                style={{ marginRight: "1.2rem", padding: "0.4rem 0.6rem" }}
+                style={{ marginRight: "1.2rem", padding: "0.4rem 0.6rem",color:'#303F9F' }}
                 activeClassName="nav-active"
               >
                 ADD RECORD
@@ -63,7 +64,7 @@ function Navigation(props) {
                 // to="/view"
                 to="/"
                 className={classes.link}
-                style={{ marginRight: "1.2rem", padding: "0.4rem 0.6rem" }}
+                style={{ marginRight: "1.2rem", padding: "0.4rem 0.6rem",color:'#303F9F' }}
                 activeClassName="nav-active"
               >
                 VIEW DATA
@@ -73,7 +74,7 @@ function Navigation(props) {
                 exact
                 to="/create"
                 className={classes.link}
-                style={{ marginRight: "1.2rem", padding: "0.4rem 0.6rem" }}
+                style={{ marginRight: "1.2rem", padding: "0.4rem 0.6rem",color:'#303F9F' }}
                 activeClassName="nav-active"
               >
                 CREATE USER

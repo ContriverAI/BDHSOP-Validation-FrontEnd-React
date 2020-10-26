@@ -70,6 +70,7 @@ function AddRecord() {
           justifyContent: "center",
           alignItems: "center",
           display: "flex",
+          height: '75vh'
         }}
       >
         <Grid item md={6} lg={6}>
