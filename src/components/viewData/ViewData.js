@@ -1,15 +1,14 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Table from "@material-ui/core/Table";
 import TextField from "@material-ui/core/TextField";
-
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import EditIcon from "@material-ui/icons/Edit";
@@ -41,7 +40,6 @@ function ViewData(props) {
   const [popUp, setPopUp] = useState(true);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [columns, setColumns] = useState([]);
   const [toSearch, setToSearch] = useState("");
   const refresh = () => {
     setLoading(true);
@@ -62,8 +60,6 @@ function ViewData(props) {
   }, []);
   console.log(data.data);
   const classes = useStyles();
-
-  const theme = useTheme();
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -110,10 +106,11 @@ function ViewData(props) {
   return (
     <div>
       <Container style={{ display: "flex", justifyContent: "center" }}>
+        {/* <p>Access : </p> {auth.accessIs} */}
         <Button
           onClick={refresh}
           variant="contained"
-          color="primary"
+          style={{ backgroundColor: "#fdb900" }}
           className={classes.button}
           startIcon={<RefreshIcon />}
         >
@@ -122,7 +119,7 @@ function ViewData(props) {
         <Button
           onClick={() => setPopUp(!popUp)}
           variant="contained"
-          color="primary"
+          style={{ backgroundColor: "#fdb900" }}
           className={classes.button}
           startIcon={<EditIcon />}
         >
@@ -137,19 +134,19 @@ function ViewData(props) {
             <div style={{ width: " 100%", display: "flex" }}>
               <Button
                 variant="contained"
-                color="primary"
+                style={{ backgroundColor: "#fdb900" }}
                 className={classes.button}
               >
                 <CSVLink
                   data={data.data}
-                  style={{ color: "white", textDecoration: "none" }}
+                  style={{ color: "black", textDecoration: "none" }}
                 >
                   DOWNLOAD CSV
                 </CSVLink>
               </Button>
               <Button
                 variant="contained"
-                color="primary"
+                style={{ backgroundColor: "#fdb900" }}
                 className={classes.button}
                 onClick={exportPDF}
               >
@@ -157,7 +154,7 @@ function ViewData(props) {
               </Button>
               <Button
                 variant="contained"
-                color="primary"
+                style={{ backgroundColor: "#fdb900", color: "black" }}
                 className={classes.button}
               >
                 <ReactHTMLTableToExcel
@@ -169,19 +166,20 @@ function ViewData(props) {
                   buttonText="DOWNLOAD XLS"
                 />
               </Button>
-              <Button
+              {/* <Button
                 variant="contained"
                 color="primary"
                 className={classes.button}
               >
                 COPY TO CLIPBOARD
-              </Button>
+              </Button> */}
               <TextField
-                style={{ marginBottom: "0.8rem", marginLeft: "25%" }}
+                style={{ marginBottom: "0.8rem", marginLeft: "45%" }}
                 id="standard"
                 label="Search"
                 width="60%"
-                onChange={(e) => setToSearch(e.target.value)}
+                value={toSearch}
+                onChange={(e) => setToSearch(e.target.value.trim())}
                 autoComplete="off"
               />
             </div>

@@ -57,23 +57,23 @@ function Home(props) {
     if (resp === "Access not granted") {
       return false;
     } else if (resp.msg === "Access Granted") {
+      auth.setAccessIs(resp.access);
       auth.login();
       return true;
     }
   };
-  console.log("from context " + props.userIs);
+  console.log(auth);
 
   const SubmitButton = () => {
     if (userName.trim() && password.trim()) {
       return (
         <Button
           variant="contained"
-          color="primary"
           onClick={(e) => {
             handleSubmit(e);
             auth.setUserIs(userName);
           }}
-          style={{ margin: "1rem" }}
+          style={{ margin: "1rem", backgroundColor: "#fdb900" }}
         >
           SUBMIT
         </Button>
@@ -113,11 +113,16 @@ function Home(props) {
         height: "80vh",
       }}
     >
-    <Grid style={{ width: "60%",display: "flex",
-        justifyContent: "center",
-        alignItems: "center", }}>
-    <img src={shop} style={{ width: "80%" }}/>
-    </Grid>
+      <Grid
+        style={{
+          width: "60%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img src={shop} style={{ width: "80%" }} />
+      </Grid>
       <Grid style={{ width: "30%" }}>
         <Paper elevation={3}>
           <Typography
@@ -146,7 +151,7 @@ function Home(props) {
               label="Username"
               fullWidth="True"
               onChange={(e) => {
-                setUserName(e.target.value);
+                setUserName(e.target.value.trim());
               }}
               autoComplete="off"
               value={userName}
@@ -160,7 +165,8 @@ function Home(props) {
                 type={values.showPassword ? "text" : "password"}
                 value={password}
                 onChange={
-                  (handleChange("password"), (e) => setPassword(e.target.value))
+                  (handleChange("password"),
+                  (e) => setPassword(e.target.value.trim()))
                 }
                 endAdornment={
                   <InputAdornment position="end">

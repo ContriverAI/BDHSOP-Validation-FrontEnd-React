@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Paper,
   Typography,
@@ -11,13 +11,10 @@ import {
   MenuItem,
   makeStyles,
   IconButton,
-  Collapse,
-  Container,
   Input,
   InputAdornment,
 } from "@material-ui/core/";
-import Alert from "@material-ui/lab/Alert";
-import CloseIcon from "@material-ui/icons/Close";
+import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import AlertPop from "../alert/AlertPop";
 import Visibility from "@material-ui/icons/Visibility";
@@ -38,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function UpdateUser() {
+  const auth = useContext(AuthContext);
   const classes = useStyles();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -57,6 +55,9 @@ function UpdateUser() {
       }
     );
     setResp(response.data);
+    setUserName("");
+    setPassword("");
+    setAccess("");
     console.log(response.data);
     // setOpen(!open);
   };
@@ -123,18 +124,17 @@ function UpdateUser() {
   const SubmitButton = () => {
     if (userName.trim() && password.trim() && access.trim()) {
       return (
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
+        <Button
+          variant="contained"
+          style={{ backgroundColor: "#fdb900" }}
+          onClick={handleSubmit}
+        >
           SUBMIT
         </Button>
       );
     } else {
       return (
-        <Button
-          variant="contained"
-          color="primary"
-          disabled
-          onClick={handleSubmit}
-        >
+        <Button variant="contained" disabled onClick={handleSubmit}>
           SUBMIT
         </Button>
       );
@@ -178,9 +178,11 @@ function UpdateUser() {
             style={{ marginBottom: "0.8rem" }}
             id="standard"
             label="Username"
+            value={userName}
             fullWidth="True"
-            onChange={(e) => setUserName(e.target.value)}
+            onChange={(e) => setUserName(e.target.value.trim())}
             autoComplete="off"
+            disabled={auth.accessIs === "limited"}
           />
           {/* <TextField
             style={{ marginBottom: "0.8rem" }}
@@ -199,8 +201,10 @@ function UpdateUser() {
               id="standard-adornment-password"
               type={values.showPassword ? "text" : "password"}
               value={password}
+              disabled={auth.accessIs === "limited"}
               onChange={
-                (handleChange("password"), (e) => setPassword(e.target.value))
+                (handleChange("password"),
+                (e) => setPassword(e.target.value.trim()))
               }
               endAdornment={
                 <InputAdornment position="end">
@@ -223,6 +227,7 @@ function UpdateUser() {
               value={access}
               onChange={(e) => setAccess(e.target.value)}
               fullWidth="True"
+              disabled={auth.accessIs === "limited"}
             >
               <MenuItem value={"limited"}>Limited</MenuItem>
               <MenuItem value={"all"}>All</MenuItem>

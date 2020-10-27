@@ -25,6 +25,9 @@ function ModalUpdate(props) {
       }
     );
     setResp(response.data);
+    setOrder("");
+    setTransaction("");
+    setAmount("");
     console.log(response.data);
   };
   const alertMessage = () => {
@@ -37,18 +40,21 @@ function ModalUpdate(props) {
   const SubmitButton = () => {
     if (order.trim() && transaction.trim() && amount.trim()) {
       return (
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
+        <Button
+          variant="contained"
+          style={{ backgroundColor: "#fdb900" }}
+          onClick={(e) => {
+            handleSubmit(e);
+            props.fetchData();
+            props.loader();
+          }}
+        >
           UPDATE
         </Button>
       );
     } else {
       return (
-        <Button
-          variant="contained"
-          color="primary"
-          disabled
-          onClick={handleSubmit}
-        >
+        <Button variant="contained" color="primary" disabled>
           UPDATE
         </Button>
       );
@@ -86,30 +92,36 @@ function ModalUpdate(props) {
             autoComplete="off"
           />
           <TextField
+            disabled={auth.accessIs === "limited"}
             style={{ marginBottom: "0.8rem" }}
             id="standard"
             label="Transaction ID"
             fullWidth="True"
-            onChange={(e) => setTransaction(e.target.value)}
+            onChange={(e) => setTransaction(e.target.value.trim())}
             autoComplete="off"
+            value={transaction}
           />
           <TextField
+            disabled={auth.accessIs === "limited"}
             style={{ marginBottom: "0.8rem" }}
             id="standard"
             label="Order Number"
             fullWidth="True"
-            onChange={(e) => setOrder(e.target.value)}
+            onChange={(e) => setOrder(e.target.value.trim())}
             autoComplete="off"
             type="number"
+            value={order}
           />
 
           <TextField
+            disabled={auth.accessIs === "limited"}
             style={{ marginBottom: "0.8rem" }}
             id="standard"
             label="Amount"
             fullWidth="True"
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={(e) => setAmount(e.target.value.trim())}
             autoComplete="off"
+            value={amount}
           />
           <AlertPop
             pop={alertMessage()}

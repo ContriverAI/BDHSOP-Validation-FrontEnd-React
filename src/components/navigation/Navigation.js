@@ -53,7 +53,11 @@ function Navigation(props) {
                 exact
                 to="/add"
                 className={classes.link}
-                style={{ marginRight: "1.2rem", padding: "0.4rem 0.6rem",color:'#303F9F' }}
+                style={{
+                  marginRight: "1.2rem",
+                  padding: "0.4rem 0.6rem",
+                  color: "#fdb900",
+                }}
                 activeClassName="nav-active"
               >
                 ADD RECORD
@@ -64,7 +68,11 @@ function Navigation(props) {
                 // to="/view"
                 to="/"
                 className={classes.link}
-                style={{ marginRight: "1.2rem", padding: "0.4rem 0.6rem",color:'#303F9F' }}
+                style={{
+                  marginRight: "1.2rem",
+                  padding: "0.4rem 0.6rem",
+                  color: "#fdb900",
+                }}
                 activeClassName="nav-active"
               >
                 VIEW DATA
@@ -74,7 +82,11 @@ function Navigation(props) {
                 exact
                 to="/create"
                 className={classes.link}
-                style={{ marginRight: "1.2rem", padding: "0.4rem 0.6rem",color:'#303F9F' }}
+                style={{
+                  marginRight: "1.2rem",
+                  padding: "0.4rem 0.6rem",
+                  color: "#fdb900",
+                }}
                 activeClassName="nav-active"
               >
                 CREATE USER

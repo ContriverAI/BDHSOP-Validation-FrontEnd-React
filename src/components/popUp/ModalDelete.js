@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Paper, Grid, TextField, Button } from "@material-ui/core/";
 import axios from "axios";
 import AlertPop from "../alert/AlertPop";
+import { AuthContext } from "../../context/AuthContext";
 
 function ModalDelete(props) {
+  const auth = useContext(AuthContext);
+
   const [transactionId, setTransactionId] = useState("");
   const [resp, setResp] = useState("");
 
@@ -18,6 +21,7 @@ function ModalDelete(props) {
       },
     });
     setResp(response.data);
+    setTransactionId("");
     console.log(response.data);
     console.log(transactionId);
     console.log(response);
@@ -34,7 +38,7 @@ function ModalDelete(props) {
       return (
         <Button
           variant="contained"
-          color="primary"
+          style={{ backgroundColor: "#fdb900" }}
           onClick={(e) => {
             handleSubmit(e);
             props.fetchData();
@@ -87,8 +91,10 @@ function ModalDelete(props) {
             id="standard"
             label="Transaction ID"
             fullWidth="True"
-            onChange={(e) => setTransactionId(e.target.value)}
+            onChange={(e) => setTransactionId(e.target.value.trim())}
             autoComplete="off"
+            value={transactionId}
+            disabled={auth.accessIs === "limited"}
           />
           <AlertPop
             pop={alertMessage()}

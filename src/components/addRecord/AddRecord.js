@@ -32,6 +32,9 @@ function AddRecord() {
       }
     );
     setResp(response.data);
+    setAmount("");
+    setOrder("");
+    setTransaction("");
     console.log(response.data);
   };
   console.log(auth);
@@ -45,7 +48,11 @@ function AddRecord() {
   const SubmitButton = () => {
     if (order.trim() && transaction.trim() && amount.trim()) {
       return (
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
+        <Button
+          variant="contained"
+          style={{ backgroundColor: "#fdb900" }}
+          onClick={handleSubmit}
+        >
           SUBMIT
         </Button>
       );
@@ -70,7 +77,7 @@ function AddRecord() {
           justifyContent: "center",
           alignItems: "center",
           display: "flex",
-          height: '75vh'
+          height: "75vh",
         }}
       >
         <Grid item md={6} lg={6}>
@@ -106,27 +113,30 @@ function AddRecord() {
               />
               <TextField
                 style={{ marginBottom: "0.8rem" }}
+                value={transaction}
                 id="standard"
                 label="Transaction ID"
                 fullWidth="True"
-                onChange={(e) => setTransaction(e.target.value)}
+                onChange={(e) => setTransaction(e.target.value.trim())}
                 autoComplete="off"
               />
               <TextField
                 style={{ marginBottom: "0.8rem" }}
+                value={order}
                 id="standard"
                 label="Order Number"
                 fullWidth="True"
-                onChange={(e) => setOrder(e.target.value)}
+                onChange={(e) => setOrder(e.target.value.trim())}
                 autoComplete="off"
                 type="number"
               />
               <TextField
                 style={{ marginBottom: "0.8rem" }}
+                value={amount}
                 id="standard"
                 label="Amount"
                 fullWidth="True"
-                onChange={(e) => setAmount(e.target.value)}
+                onChange={(e) => setAmount(e.target.value.trim())}
                 autoComplete="off"
               />
               <AlertPop
