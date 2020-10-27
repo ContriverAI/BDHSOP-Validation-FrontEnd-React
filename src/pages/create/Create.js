@@ -5,20 +5,39 @@ import { Container } from "@material-ui/core/";
 import UserTable from "../../components/userTable/UserTable";
 function Create() {
   return (
-    <div>
+    <div
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+        display: "flex",
+        width: "100%",
+        height: "auto",
+      }}
+    >
       <Container
-        fixed
         style={{
           justifyContent: "center",
           alignItems: "center",
           display: "flex",
-          width: "100%",
-          height: "80vh",
+          width: "70%",
+          height: "auto",
+          padding: "0.8rem",
         }}
       >
-        <CreateUser style={{ width: "48%" }} />
-        <UpdateUser style={{ width: "48%" }} />
         <UserTable />
+      </Container>
+      <Container
+        style={{
+          // justifyContent: "center",
+          // alignItems: "center",
+          display: "flex",
+          width: "50%",
+          height: "auto",
+          flexDirection: "column",
+        }}
+      >
+        <CreateUser style={{ width: "40%" }} />
+        <UpdateUser style={{ width: "40%" }} />
       </Container>
     </div>
   );

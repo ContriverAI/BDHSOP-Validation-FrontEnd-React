@@ -13,7 +13,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { TableFooter, TablePagination } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   table: {
-    minWidth: 650,
+    minWidth: "100%",
   },
   button: {
     margin: theme.spacing(1),
@@ -49,12 +49,17 @@ function UserTable() {
     setPage(0);
   };
   return (
-    <div>
+    <div style={{ padding: "1rem" }}>
       <TextField
-        style={{ marginBottom: "0.8rem", marginLeft: "45%" }}
+        style={{
+          marginBottom: "0.8rem",
+          width: "90%",
+          marginLeft: "5%",
+          position: "sticky",
+        }}
         id="standard"
         label="Search"
-        width="60%"
+        width="100%"
         value={toSearch}
         onChange={(e) => setToSearch(e.target.value.trim())}
         autoComplete="off"

@@ -32,9 +32,11 @@ function AddRecord() {
       }
     );
     setResp(response.data);
-    setAmount("");
-    setOrder("");
-    setTransaction("");
+    setTimeout(() => {
+      setAmount("");
+      setOrder("");
+      setTransaction("");
+    }, 1500);
     console.log(response.data);
   };
   console.log(auth);
@@ -142,7 +144,7 @@ function AddRecord() {
               <AlertPop
                 pop={alertMessage()}
                 success="Record updated."
-                failure="Record exists with same transaction number."
+                failure={`record with same transaction ID : '${transaction}'`}
               />
               <SubmitButton />
             </div>
