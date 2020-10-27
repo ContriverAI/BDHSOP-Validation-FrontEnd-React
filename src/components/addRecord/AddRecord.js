@@ -11,6 +11,7 @@ import {
   Button,
 } from "@material-ui/core/";
 import { AuthContext } from "../../context/AuthContext";
+let x = '';
 function AddRecord() {
   const auth = useContext(AuthContext);
   // const [userName, setUserName] = useState(auth.userIs);
@@ -37,7 +38,7 @@ function AddRecord() {
       setOrder("");
       setTransaction("");
     }, 1500);
-    // console.log(response.data);
+  alert(response.data);
   };
   // console.log(auth);
   const alertMessage = () => {
@@ -144,7 +145,7 @@ function AddRecord() {
               <AlertPop
                 pop={alertMessage()}
                 success="Record updated."
-                failure={`record with same transaction ID : '${transaction}'`}
+                failure={`Record already exists with order number : '${x}'`}
               />
               <SubmitButton />
             </div>
