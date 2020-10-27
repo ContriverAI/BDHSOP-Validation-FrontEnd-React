@@ -18,7 +18,7 @@ function AddRecord() {
   const [transaction, setTransaction] = useState("");
   const [amount, setAmount] = useState("");
   const [resp, setResp] = useState("");
-  console.log(auth);
+  // console.log(auth);
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     // alert(`Submitting : ${order},${transaction},${amount}`);
@@ -37,9 +37,9 @@ function AddRecord() {
       setOrder("");
       setTransaction("");
     }, 1500);
-    console.log(response.data);
+    // console.log(response.data);
   };
-  console.log(auth);
+  // console.log(auth);
   const alertMessage = () => {
     if (resp === `record with same order number : '${order}'`) {
       return false;

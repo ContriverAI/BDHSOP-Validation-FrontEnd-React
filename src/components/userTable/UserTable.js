@@ -34,7 +34,7 @@ function UserTable() {
     const response = await axios.get("http://34.122.82.176:3000/get/userData");
     setData(response);
     setLoading(false);
-    console.log(data);
+    // console.log(data);
   };
   useEffect(() => {
     fetchData();

@@ -17,7 +17,7 @@ function App() {
   const [isLoggedIn, SetIsLoggedIn] = useState(auth.isLoggedIn);
   const [userIs, setUserIs] = useState(auth.userIs);
   const [accessIs, setAccessIs] = useState(auth.access);
-  console.log(isLoggedIn);
+  // console.log(isLoggedIn);
   const login = useCallback(() => {
     SetIsLoggedIn(true);
   }, []);

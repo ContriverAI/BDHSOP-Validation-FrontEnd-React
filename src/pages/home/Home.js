@@ -51,7 +51,7 @@ function Home(props) {
       password: password,
     });
     setResp(response.data);
-    console.log(response.data);
+    // console.log(response.data);
   };
   const alertMessage = () => {
     if (resp === "Access not granted") {
@@ -62,7 +62,7 @@ function Home(props) {
       return true;
     }
   };
-  console.log(auth);
+  // console.log(auth);
 
   const SubmitButton = () => {
     if (userName.trim() && password.trim()) {

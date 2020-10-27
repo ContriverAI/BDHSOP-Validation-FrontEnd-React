@@ -52,13 +52,13 @@ function ViewData(props) {
     );
     setData(response);
     setLoading(false);
-    console.log(data.length);
+    // console.log(data.length);
     // alert("clicked");
   };
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(data.data);
+  // console.log(data.data);
   const classes = useStyles();
 
   const handleChangePage = (event, newPage) => {
@@ -68,7 +68,7 @@ function ViewData(props) {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-  console.log(toSearch);
+  // console.log(toSearch);
   const exportPDF = () => {
     const unit = "pt";
     const size = "A4"; // Use A1, A2, A3 or A4
