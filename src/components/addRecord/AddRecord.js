@@ -32,11 +32,11 @@ function AddRecord() {
       }
     );
     setResp(response.data);
-    setTimeout(() => {
-      setAmount("");
-      setOrder("");
-      setTransaction("");
-    }, 1500);
+    // setTimeout(() => {
+    //   setAmount("");
+    //   setOrder("");
+    //   setTransaction("");
+    // }, 1500);
     // console.log(response.data);
   };
   // console.log(auth);
@@ -130,7 +130,7 @@ function AddRecord() {
                 fullWidth="True"
                 onChange={(e) => setOrder(e.target.value.trim())}
                 autoComplete="off"
-                type="number"
+                // type="number"
               />
               <TextField
                 style={{ marginBottom: "0.8rem" }}
@@ -144,7 +144,7 @@ function AddRecord() {
               <AlertPop
                 pop={alertMessage()}
                 success="Record updated."
-                failure={`record with same transaction ID : '${transaction}'`}
+                failure={`record exist with same transaction ID`}
               />
               <SubmitButton />
             </div>
