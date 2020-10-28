@@ -190,6 +190,7 @@ function ViewData(props) {
             >
               <TableHead>
                 <TableRow>
+                  <TableCell align="left">Date</TableCell>
                   <TableCell align="left">Time</TableCell>
                   <TableCell align="left">Recorded By</TableCell>
                   <TableCell align="left">Order Number</TableCell>
@@ -218,6 +219,9 @@ function ViewData(props) {
                     <TableRow key={row.trans_id}>
                       <TableCell align="left">
                         {new Date(row.TimeStamp).toDateString()}
+                      </TableCell>
+                      <TableCell align="left">
+                        {new Date(row.TimeStamp).toLocaleTimeString()}
                       </TableCell>
                       <TableCell align="left">{row.username}</TableCell>
                       <TableCell align="left">{row.ord_number}</TableCell>

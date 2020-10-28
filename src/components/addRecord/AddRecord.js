@@ -38,18 +38,17 @@ function AddRecord() {
     //   setOrder("");
     //   setTransaction("");
     // }, 1500);
-    // console.log(response.data);
+    console.log(response.data);
   };
   // console.log(auth);
   const alertMessage = () => {
-    if (resp === `record with same order number : '${transaction}'`) {
-      alert(`record with same order number : '${transaction}'`);
+    if (resp.includes("record with same order number")) {
       return false;
     } else if (resp === "successfully updated") {
-      alert("successfully updated");
       return true;
     }
   };
+
   const SubmitButton = () => {
     if (order.trim() && transaction.trim() && amount.trim()) {
       return (
