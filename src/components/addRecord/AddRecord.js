@@ -34,9 +34,9 @@ function AddRecord() {
     );
     setResp(response.data);
     // setTimeout(() => {
-    //   setAmount("");
-    //   setOrder("");
-    //   setTransaction("");
+    setAmount("");
+    setOrder("");
+    setTransaction("");
     // }, 1500);
     console.log(response.data);
   };
