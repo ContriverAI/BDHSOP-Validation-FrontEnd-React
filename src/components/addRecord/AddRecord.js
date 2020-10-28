@@ -11,6 +11,7 @@ import {
   Button,
 } from "@material-ui/core/";
 import { AuthContext } from "../../context/AuthContext";
+let x = "";
 function AddRecord() {
   const auth = useContext(AuthContext);
   // const [userName, setUserName] = useState(auth.userIs);
