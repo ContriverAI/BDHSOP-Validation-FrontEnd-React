@@ -201,15 +201,20 @@ function ViewData(props) {
               <TableBody>
                 {data.data
                   .filter((datas) => {
-                    if (toSearch == null) return datas;
+                    if (toSearch == "") return datas;
                     else if (
                       datas.username
+                        .toString()
                         .toLowerCase()
-                        .includes(toSearch.toLowerCase()) ||
-                      datas.ord_number.toString().includes(toSearch) ||
+                        .includes(toSearch.toString().toLowerCase()) ||
+                      datas.ord_number
+                        .toString()
+                        .toLowerCase()
+                        .includes(toSearch.toString().toLowerCase()) ||
                       datas.trans_id
+                        .toString()
                         .toLowerCase()
-                        .includes(toSearch.toLowerCase())
+                        .includes(toSearch.toString().toLowerCase())
                     ) {
                       return datas;
                     }
