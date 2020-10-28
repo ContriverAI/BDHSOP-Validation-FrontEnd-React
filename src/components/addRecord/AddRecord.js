@@ -146,7 +146,9 @@ function AddRecord() {
               <AlertPop
                 pop={alertMessage()}
                 success="Record updated."
-                failure={`Same transaction number exists with order number ${transaction}`}
+                failure={`Same transaction number exists with order number ${resp.slice(
+                  31
+                )}`}
               />
               <SubmitButton />
             </div>
