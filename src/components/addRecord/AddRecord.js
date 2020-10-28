@@ -36,7 +36,7 @@ function AddRecord() {
     // setTimeout(() => {
     setAmount("");
     setOrder("");
-    setTransaction("");
+    // setTransaction("");
     // }, 1500);
     console.log(response.data);
   };
@@ -146,7 +146,7 @@ function AddRecord() {
               <AlertPop
                 pop={alertMessage()}
                 success="Record updated."
-                failure={`record exist with same order ID ${transaction}`}
+                failure={`Same transaction number exists with order number ${transaction}`}
               />
               <SubmitButton />
             </div>
