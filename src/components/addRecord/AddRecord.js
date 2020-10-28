@@ -42,9 +42,11 @@ function AddRecord() {
   };
   // console.log(auth);
   const alertMessage = () => {
-    if (resp === `record with same order number : '${order}'`) {
+    if (resp === `record with same order number : '${transaction}'`) {
+      alert(`record with same order number : '${transaction}'`);
       return false;
     } else if (resp === "successfully updated") {
+      alert("successfully updated");
       return true;
     }
   };
@@ -145,7 +147,7 @@ function AddRecord() {
               <AlertPop
                 pop={alertMessage()}
                 success="Record updated."
-                failure={`record exist with same transaction ID`}
+                failure={`record exist with same order ID ${transaction}`}
               />
               <SubmitButton />
             </div>
