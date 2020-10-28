@@ -38,7 +38,7 @@ function ModalDelete(props) {
       return (
         <Button
           variant="contained"
-          style={{ backgroundColor: "#fdb900" }}
+          style={{ backgroundColor: "#fdb900", padding: "8px 40px" }}
           onClick={(e) => {
             handleSubmit(e);
             props.loader();
@@ -53,6 +53,7 @@ function ModalDelete(props) {
         <Button
           variant="contained"
           color="primary"
+          style={{ padding: "8px 40px" }}
           disabled
           onClick={(e) => {
             handleSubmit(e);
@@ -109,7 +110,12 @@ function ModalDelete(props) {
             }}
           >
             <SubmitButton />
-            <Button variant="contained" color="secondary" onClick={props.close}>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={props.close}
+              style={{ padding: "8px 40px" }}
+            >
               CLOSE
             </Button>
           </div>

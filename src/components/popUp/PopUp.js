@@ -23,7 +23,7 @@ function PopUp(props) {
               <div
                 className="btn"
                 onClick={() => setModal(true)}
-                style={{ backgroundColor: "#3F51B5", color: "white" }}
+                style={{ background: "#fdb900", color: "black" }}
               >
                 DELETE RECORD
               </div>
@@ -33,7 +33,7 @@ function PopUp(props) {
               <div
                 className="btn"
                 onClick={() => setModal(false)}
-                style={{ backgroundColor: "#3F51B5", color: "white" }}
+                style={{ background: "#fdb900", color: "black" }}
               >
                 UPDATE RECORD
               </div>

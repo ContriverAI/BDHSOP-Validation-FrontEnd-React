@@ -42,7 +42,7 @@ function ModalUpdate(props) {
       return (
         <Button
           variant="contained"
-          style={{ backgroundColor: "#fdb900" }}
+          style={{ backgroundColor: "#fdb900", padding: "8px 40px" }}
           onClick={(e) => {
             handleSubmit(e);
             props.fetchData();
@@ -54,7 +54,12 @@ function ModalUpdate(props) {
       );
     } else {
       return (
-        <Button variant="contained" color="primary" disabled>
+        <Button
+          variant="contained"
+          style={{ padding: "8px 40px" }}
+          color="primary"
+          disabled
+        >
           UPDATE
         </Button>
       );
@@ -109,7 +114,6 @@ function ModalUpdate(props) {
             fullWidth="True"
             onChange={(e) => setOrder(e.target.value.trim())}
             autoComplete="off"
-            type="number"
             value={order}
           />
 
@@ -136,7 +140,12 @@ function ModalUpdate(props) {
             }}
           >
             <SubmitButton />
-            <Button variant="contained" color="secondary" onClick={props.close}>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={props.close}
+              style={{ padding: "8px 40px" }}
+            >
               CLOSE
             </Button>
           </div>

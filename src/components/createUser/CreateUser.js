@@ -129,7 +129,7 @@ function CreateUser() {
       return (
         <Button
           variant="contained"
-          style={{ backgroundColor: "#fdb900" }}
+          style={{ backgroundColor: "#fdb900", padding: "8px 40px" }}
           onClick={handleSubmit}
         >
           SUBMIT
@@ -137,7 +137,12 @@ function CreateUser() {
       );
     } else {
       return (
-        <Button variant="contained" disabled onClick={handleSubmit}>
+        <Button
+          variant="contained"
+          style={{ padding: "8px 40px" }}
+          disabled
+          onClick={handleSubmit}
+        >
           SUBMIT
         </Button>
       );
@@ -161,8 +166,8 @@ function CreateUser() {
           variant="h5"
           style={{
             textAlign: "center",
-            background: "#3f51b5",
-            color: "white",
+            background: "#fdb900",
+            color: "black",
             padding: "0.6rem",
           }}
         >

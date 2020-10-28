@@ -11,7 +11,6 @@ import {
   Button,
 } from "@material-ui/core/";
 import { AuthContext } from "../../context/AuthContext";
-let x = "";
 function AddRecord() {
   const auth = useContext(AuthContext);
   // const [userName, setUserName] = useState(auth.userIs);
@@ -36,7 +35,7 @@ function AddRecord() {
     // setTimeout(() => {
     setAmount("");
     setOrder("");
-    // setTransaction("");
+    setTransaction("");
     // }, 1500);
     console.log(response.data);
   };
@@ -54,7 +53,7 @@ function AddRecord() {
       return (
         <Button
           variant="contained"
-          style={{ backgroundColor: "#fdb900" }}
+          style={{ backgroundColor: "#fdb900", padding: "8px 40px" }}
           onClick={handleSubmit}
         >
           SUBMIT
@@ -64,6 +63,7 @@ function AddRecord() {
       return (
         <Button
           variant="contained"
+          style={{ padding: "8px 40px" }}
           color="primary"
           disabled
           onClick={handleSubmit}
@@ -90,8 +90,8 @@ function AddRecord() {
               variant="h5"
               style={{
                 textAlign: "center",
-                background: "#3f51b5",
-                color: "white",
+                background: "#fdb900",
+                color: "black",
                 padding: "0.6rem",
               }}
             >

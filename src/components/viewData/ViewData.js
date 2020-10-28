@@ -131,41 +131,52 @@ function ViewData(props) {
           <CircularProgress disableShrink />
         ) : (
           <TableContainer component={Paper}>
-            <div style={{ width: " 100%", display: "flex" }}>
-              <Button
-                variant="contained"
-                style={{ backgroundColor: "#fdb900" }}
-                className={classes.button}
+            <div
+              style={{ width: "100%", display: "flex", alignItems: "center" }}
+            >
+              <div
+                style={{
+                  width: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  marginLeft: "30%",
+                }}
               >
-                <CSVLink
-                  data={data.data}
-                  style={{ color: "black", textDecoration: "none" }}
+                <Button
+                  variant="contained"
+                  style={{ backgroundColor: "#fdb900" }}
+                  className={classes.button}
                 >
-                  DOWNLOAD CSV
-                </CSVLink>
-              </Button>
-              <Button
-                variant="contained"
-                style={{ backgroundColor: "#fdb900" }}
-                className={classes.button}
-                onClick={exportPDF}
-              >
-                DOWNLOAD PDF
-              </Button>
-              <Button
-                variant="contained"
-                style={{ backgroundColor: "#fdb900", color: "black" }}
-                className={classes.button}
-              >
-                <ReactHTMLTableToExcel
-                  id="test-table-xls-button"
-                  className="download-table-xls-button"
-                  table="table-to-xls"
-                  filename="tablexls"
-                  sheet="tablexls"
-                  buttonText="DOWNLOAD XLS"
-                />
-              </Button>
+                  <CSVLink
+                    data={data.data}
+                    style={{ color: "black", textDecoration: "none" }}
+                  >
+                    DOWNLOAD CSV
+                  </CSVLink>
+                </Button>
+                <Button
+                  variant="contained"
+                  style={{ backgroundColor: "#fdb900" }}
+                  className={classes.button}
+                  onClick={exportPDF}
+                >
+                  DOWNLOAD PDF
+                </Button>
+                <Button
+                  variant="contained"
+                  style={{ backgroundColor: "#fdb900", color: "black" }}
+                  className={classes.button}
+                >
+                  <ReactHTMLTableToExcel
+                    id="test-table-xls-button"
+                    className="download-table-xls-button"
+                    table="table-to-xls"
+                    filename="tablexls"
+                    sheet="tablexls"
+                    buttonText="DOWNLOAD XLS"
+                  />
+                </Button>
+              </div>
               {/* <Button
                 variant="contained"
                 color="primary"
@@ -173,15 +184,19 @@ function ViewData(props) {
               >
                 COPY TO CLIPBOARD
               </Button> */}
-              <TextField
-                style={{ marginBottom: "0.8rem", marginLeft: "45%" }}
-                id="standard"
-                label="Search"
-                width="60%"
-                value={toSearch}
-                onChange={(e) => setToSearch(e.target.value.trim())}
-                autoComplete="off"
-              />
+              <div
+                style={{ width: "15%", display: "flex", alignItems: "center" }}
+              >
+                <TextField
+                  style={{ marginBottom: "0.8rem" }}
+                  id="standard"
+                  label="Search"
+                  width="60%"
+                  value={toSearch}
+                  onChange={(e) => setToSearch(e.target.value.trim())}
+                  autoComplete="off"
+                />
+              </div>
             </div>
             <Table
               className={classes.table}
@@ -201,7 +216,7 @@ function ViewData(props) {
               <TableBody>
                 {data.data
                   .filter((datas) => {
-                    if (toSearch == "") return datas;
+                    if (toSearch === "") return datas;
                     else if (
                       datas.username
                         .toString()

@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useContext, createContext } from "react";
+import React, { useState, useContext } from "react";
 import {
   Paper,
   Typography,
@@ -7,8 +7,6 @@ import {
   Button,
   FormControl,
   InputLabel,
-  Select,
-  MenuItem,
   makeStyles,
   Container,
   Input,
@@ -18,10 +16,9 @@ import {
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { AuthContext } from "../../context/AuthContext";
-import { Event } from "@material-ui/icons";
 import axios from "axios";
 import AlertPop from "../../components/alert/AlertPop";
-import shop from "../../asset/shop.svg";
+import shop from "../../asset/shop1.svg";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -34,8 +31,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Home(props) {
   const auth = useContext(AuthContext);
-
-  const classes = useStyles();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [resp, setResp] = useState("");
@@ -73,7 +68,11 @@ function Home(props) {
             handleSubmit(e);
             auth.setUserIs(userName);
           }}
-          style={{ margin: "1rem", backgroundColor: "#fdb900" }}
+          style={{
+            margin: "1rem",
+            backgroundColor: "#fdb900",
+            padding: "8px 40px",
+          }}
         >
           SUBMIT
         </Button>
@@ -85,7 +84,7 @@ function Home(props) {
           color="primary"
           disabled
           onClick={handleSubmit}
-          style={{ margin: "1rem" }}
+          style={{ margin: "1rem", padding: "8px 40px" }}
         >
           SUBMIT
         </Button>
@@ -121,7 +120,7 @@ function Home(props) {
           alignItems: "center",
         }}
       >
-        <img src={shop} style={{ width: "80%" }} />
+        <img src={shop} style={{ width: "80%" }} alt={"img"} />
       </Grid>
       <Grid style={{ width: "30%" }}>
         <Paper elevation={3}>
@@ -129,8 +128,8 @@ function Home(props) {
             variant="h5"
             style={{
               textAlign: "center",
-              background: "#3f51b5",
-              color: "white",
+              background: "#fdb900",
+              color: "black",
               padding: "0.6rem",
             }}
           >
