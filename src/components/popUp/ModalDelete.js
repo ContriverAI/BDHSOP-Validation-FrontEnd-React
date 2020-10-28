@@ -41,8 +41,8 @@ function ModalDelete(props) {
           style={{ backgroundColor: "#fdb900" }}
           onClick={(e) => {
             handleSubmit(e);
-            props.fetchData();
             props.loader();
+            props.fetchData();
           }}
         >
           DELETE
@@ -56,8 +56,8 @@ function ModalDelete(props) {
           disabled
           onClick={(e) => {
             handleSubmit(e);
-            props.fetchData();
             props.loader();
+            props.fetchData();
           }}
         >
           DELETE
