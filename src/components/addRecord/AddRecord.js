@@ -146,7 +146,7 @@ function AddRecord() {
               <AlertPop
                 pop={alertMessage()}
                 success="Record updated."
-                failure={`Same transaction number exists with order number ${resp.slice(
+                failure={`This transaction already applied to order number ${resp.slice(
                   31
                 )}`}
               />
