@@ -18,6 +18,8 @@ function AddRecord() {
   const [transaction, setTransaction] = useState("");
   const [amount, setAmount] = useState("");
   const [resp, setResp] = useState("");
+  const [msg, setMsg] = useState("");
+  // const [uid, setUid] = useState("");
   // console.log(auth);
   const handleSubmit = async (evt) => {
     evt.preventDefault();
@@ -38,12 +40,14 @@ function AddRecord() {
     setTransaction("");
     // }, 1500);
     console.log(response.data);
+    setMsg(response.data.data);
+    // setUid(response.data.uid);
   };
   // console.log(auth);
   const alertMessage = () => {
-    if (resp.includes("record with same order number")) {
+    if (msg.includes("record with same order number")) {
       return false;
-    } else if (resp === "successfully updated") {
+    } else if (msg === "successfully updated") {
       return true;
     }
   };
@@ -145,8 +149,8 @@ function AddRecord() {
               />
               <AlertPop
                 pop={alertMessage()}
-                success="Record updated."
-                failure={`This transaction already applied to order number ${resp.slice(
+                success={`Record updated, approval code ${resp.uid}`}
+                failure={`This transaction already applied to order number ${msg.slice(
                   31
                 )}`}
               />

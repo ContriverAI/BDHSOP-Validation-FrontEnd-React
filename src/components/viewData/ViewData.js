@@ -20,6 +20,7 @@ import { CSVLink } from "react-csv";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
+import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
   table: {
@@ -243,6 +244,9 @@ function ViewData(props) {
                       <TableCell align="left">
                         {new Date(row.TimeStamp).toLocaleTimeString()}
                       </TableCell>
+                      {/* <TableCell align="left">
+                        {moment(row.TimeStamp).fromNow(true)} ago
+                      </TableCell> */}
                       <TableCell align="left">{row.username}</TableCell>
                       <TableCell align="left">{row.ord_number}</TableCell>
                       <TableCell align="left">{row.trans_id}</TableCell>
