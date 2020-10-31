@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Table from "@material-ui/core/Table";
 import TextField from "@material-ui/core/TextField";
@@ -21,6 +21,7 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import moment from "moment";
+import { AuthContext } from "../../context/AuthContext";
 
 const useStyles = makeStyles((theme) => ({
   table: {
@@ -36,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ViewData(props) {
+  const auth = useContext(AuthContext);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [popUp, setPopUp] = useState(true);
@@ -82,7 +84,14 @@ function ViewData(props) {
 
     const title = "ValidationBDSHOP";
     const headers = [
-      ["TIME", "RECORDED BY", "ORDER NUMBER", "TRANSACTION ID", "AMOUNT"],
+      [
+        "TIME",
+        "RECORDED BY",
+        "ORDER NUMBER",
+        "TRANSACTION ID",
+        "AMOUNT",
+        "UTR",
+      ],
     ];
 
     const dataTable = data.data.map((elt) => [
@@ -91,6 +100,7 @@ function ViewData(props) {
       elt.ord_number,
       elt.trans_id,
       elt.Amount,
+      elt.utr,
     ]);
 
     let content = {
@@ -143,14 +153,52 @@ function ViewData(props) {
                   marginLeft: "30%",
                 }}
               >
-                <Button
+                {auth.accessIs === "limited" ? null : (
+                  <div>
+                    <Button
+                      variant="contained"
+                      style={{ backgroundColor: "#fdb900" }}
+                      className={classes.button}
+                    >
+                      <CSVLink
+                        data={data.data}
+                        style={{ color: "black", textDecoration: "none" }}
+                      >
+                        DOWNLOAD CSV
+                      </CSVLink>
+                    </Button>
+                    <Button
+                      variant="contained"
+                      style={{ backgroundColor: "#fdb900" }}
+                      className={classes.button}
+                      onClick={exportPDF}
+                    >
+                      DOWNLOAD PDF
+                    </Button>
+                    <Button
+                      variant="contained"
+                      style={{ backgroundColor: "#fdb900", color: "black" }}
+                      className={classes.button}
+                    >
+                      <ReactHTMLTableToExcel
+                        id="test-table-xls-button"
+                        className="download-table-xls-button"
+                        table="table-to-xls"
+                        filename="tablexls"
+                        sheet="tablexls"
+                        buttonText="DOWNLOAD XLS"
+                      />
+                    </Button>
+                  </div>
+                )}
+                {/* <Button
                   variant="contained"
                   style={{ backgroundColor: "#fdb900" }}
                   className={classes.button}
                 >
                   <CSVLink
                     data={data.data}
-                    style={{ color: "black", textDecoration: "none" }}
+                    // style={{ color: "black", textDecoration: "none" }}
                   >
                     DOWNLOAD CSV
                   </CSVLink>
@@ -176,7 +224,7 @@ function ViewData(props) {
                     sheet="tablexls"
                     buttonText="DOWNLOAD XLS"
                   />
-                </Button>
+                </Button> */}
               </div>
               {/* <Button
                 variant="contained"
@@ -212,6 +260,7 @@ function ViewData(props) {
                   <TableCell align="left">Order Number</TableCell>
                   <TableCell align="left">Transaction ID</TableCell>
                   <TableCell align="left">Amount</TableCell>
+                  <TableCell align="left">UTR</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -251,6 +300,7 @@ function ViewData(props) {
                       <TableCell align="left">{row.ord_number}</TableCell>
                       <TableCell align="left">{row.trans_id}</TableCell>
                       <TableCell align="left">{row.Amount}</TableCell>
+                      <TableCell align="left">{row.utr}</TableCell>
                     </TableRow>
                   ))}
               </TableBody>
@@ -258,7 +308,7 @@ function ViewData(props) {
             <TableFooter>
               <TableRow>
                 <TablePagination
-                  rowsPerPageOptions={[5, 10, 25]}
+                  rowsPerPageOptions={[5, 10, 25, 50, 100, data.data.length]}
                   colSpan={3}
                   count={data.data.length}
                   rowsPerPage={rowsPerPage}
