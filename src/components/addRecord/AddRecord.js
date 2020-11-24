@@ -25,7 +25,7 @@ function AddRecord() {
     evt.preventDefault();
     // alert(`Submitting : ${order},${transaction},${amount}`);
     const response = await axios.post(
-      "http://34.122.82.176:3000/post/addRecord",
+      "http://localhost:3000/post/addRecord",
       {
         username: auth.userIs,
         ordernumber: order,

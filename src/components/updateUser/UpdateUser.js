@@ -47,7 +47,7 @@ function UpdateUser() {
     evt.preventDefault();
     // alert(`Submitting : ${userName},${password},${access}`);
     const response = await axios.patch(
-      "http://34.122.82.176:3000/post/modifyUser",
+      "http://localhost:3000/post/modifyUser",
       {
         username: userName,
         password: password,

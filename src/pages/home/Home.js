@@ -41,7 +41,7 @@ function Home(props) {
     // alert(`Submitting : ${userName},${password}`);
     // setUserName("");
     // setPassword("");
-    const response = await axios.post("http://34.122.82.176:3000/login", {
+    const response = await axios.post("http://localhost:3000/login", {
       username: userName,
       password: password,
     });

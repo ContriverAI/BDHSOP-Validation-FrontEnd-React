@@ -15,7 +15,7 @@ function ModalDelete(props) {
 
     const response = await axios({
       method: "delete",
-      url: "http://34.122.82.176:3000/post/deleteRecord",
+      url: "http://localhost:3000/post/deleteRecord",
       data: {
         transactionID: transactionId,
       },

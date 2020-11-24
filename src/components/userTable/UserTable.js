@@ -31,7 +31,7 @@ function UserTable() {
   const [toSearch, setToSearch] = useState("");
 
   const fetchData = async () => {
-    const response = await axios.get("http://34.122.82.176:3000/get/userData");
+    const response = await axios.get("http://localhost:3000/get/userData");
     setData(response);
     setLoading(false);
     // console.log(data);

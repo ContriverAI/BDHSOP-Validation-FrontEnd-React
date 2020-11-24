@@ -49,7 +49,7 @@ function CreateUser() {
     evt.preventDefault();
     // alert(`Submitting : ${userName},${password},${access}`);
     const response = await axios.post(
-      "http://34.122.82.176:3000/post/addUser",
+      "http://localhost:3000/post/addUser",
       {
         username: userName,
         password: password,
