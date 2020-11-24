@@ -51,7 +51,7 @@ function ViewData(props) {
 
   const fetchData = async () => {
     const response = await axios.get(
-      "http://localhost:3000/get/recordData"
+      "http://34.71.25.223:3000/get/recordData"
     );
     setData(response);
     setLoading(false);

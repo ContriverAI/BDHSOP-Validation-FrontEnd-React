@@ -16,7 +16,7 @@ function ModalUpdate(props) {
     evt.preventDefault();
     // alert(`Submitting : ${order},${transaction},${amount}`);
     const response = await axios.patch(
-      "http://localhost:3000/post/updateRecord",
+      "http://34.71.25.223:3000/post/updateRecord",
       {
         username: auth.userIs,
         ordernumber: order,
