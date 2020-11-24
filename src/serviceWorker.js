@@ -10,7 +10,7 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
-const is34.71.25.223 = Boolean(
+const islocahost = Boolean(
   window.location.hostname === '34.71.25.223' ||
     // [::1] is the IPv6 34.71.25.223 address.
     window.location.hostname === '[::1]' ||
@@ -34,7 +34,7 @@ export function register(config) {
     window.addEventListener('load', () => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
 
-      if (is34.71.25.223) {
+      if (islocahost) {
         // This is running on 34.71.25.223. Let's check if a service worker still exists or not.
         checkValidServiceWorker(swUrl, config);
 
