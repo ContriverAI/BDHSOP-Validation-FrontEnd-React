@@ -48,12 +48,10 @@ function ViewData(props) {
   };
 
   const fetchData = async () => {
-    const response = await axios.get(
-      "http://34.71.25.223:3000/get/recordData"
-    );
+    const response = await axios.get("http://34.71.25.223:3000/get/recordData");
     setData(response);
     setLoading(false);
-    // console.log(data.length);
+    console.log(data);
     // alert("clicked");
   };
   useEffect(() => {
@@ -82,7 +80,14 @@ function ViewData(props) {
 
     const title = "ValidationBDSHOP";
     const headers = [
-      ["TIME", "RECORDED BY", "ORDER NUMBER", "TRANSACTION ID", "AMOUNT"],
+      [
+        "TIME",
+        "RECORDED BY",
+        "ORDER NUMBER",
+        "TRANSACTION ID",
+        "UTR",
+        "AMOUNT",
+      ],
     ];
 
     const dataTable = data.data.map((elt) => [
@@ -90,6 +95,7 @@ function ViewData(props) {
       elt.username,
       elt.ord_number,
       elt.trans_id,
+      elt.utr,
       elt.Amount,
     ]);
 
@@ -102,6 +108,28 @@ function ViewData(props) {
     doc.text(title, marginLeft, 40);
     doc.autoTable(content);
     doc.save("report.pdf");
+  };
+  const searchTable = () => {
+    return data.data.filter(
+      (datas) =>
+        datas.username
+          .toString()
+          .toLowerCase()
+          .includes(toSearch.toString().toLowerCase()) ||
+        datas.ord_number
+          .toString()
+          .toLowerCase()
+          .includes(toSearch.toString().toLowerCase()) ||
+        datas.trans_id
+          .toString()
+          .toLowerCase()
+          .includes(toSearch.toString().toLowerCase())
+      // ||
+      // datas.utr
+      //   .toString()
+      //   .toLowerCase()
+      //   .includes(toSearch.toString().toLowerCase())
+    );
   };
 
   return (
@@ -211,56 +239,41 @@ function ViewData(props) {
                   <TableCell align="left">Recorded By</TableCell>
                   <TableCell align="left">Order Number</TableCell>
                   <TableCell align="left">Transaction ID</TableCell>
+                  <TableCell align="left">UTR</TableCell>
                   <TableCell align="left">Amount</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {data.data
-                  .filter((datas) => {
-                    if (toSearch === "") return datas;
-                    else if (
-                      datas.username
-                        .toString()
-                        .toLowerCase()
-                        .includes(toSearch.toString().toLowerCase()) ||
-                      datas.ord_number
-                        .toString()
-                        .toLowerCase()
-                        .includes(toSearch.toString().toLowerCase()) ||
-                      datas.trans_id
-                        .toString()
-                        .toLowerCase()
-                        .includes(toSearch.toString().toLowerCase())
-                    ) {
-                      return datas;
-                    }
-                  })
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row) => (
-                    <TableRow key={row.trans_id}>
-                      <TableCell align="left">
-                        {new Date(row.TimeStamp).toDateString()}
-                      </TableCell>
-                      <TableCell align="left">
-                        {new Date(row.TimeStamp).toLocaleTimeString()}
-                      </TableCell>
-                      {/* <TableCell align="left">
+                {data.data &&
+                  searchTable()
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map((row, i) => (
+                      <TableRow key={i}>
+                        <TableCell align="left">
+                          {new Date(row.TimeStamp).toDateString()}
+                        </TableCell>
+                        <TableCell align="left">
+                          {new Date(row.TimeStamp).toLocaleTimeString()}
+                        </TableCell>
+                        {/* <TableCell align="left">
                         {moment(row.TimeStamp).fromNow(true)} ago
                       </TableCell> */}
-                      <TableCell align="left">{row.username}</TableCell>
-                      <TableCell align="left">{row.ord_number}</TableCell>
-                      <TableCell align="left">{row.trans_id}</TableCell>
-                      <TableCell align="left">{row.Amount}</TableCell>
-                    </TableRow>
-                  ))}
+                        <TableCell align="left">{row.username}</TableCell>
+                        <TableCell align="left">{row.ord_number}</TableCell>
+                        <TableCell align="left">{row.trans_id}</TableCell>
+                        <TableCell align="left">{row.utr}</TableCell>
+
+                        <TableCell align="left">{row.Amount}</TableCell>
+                      </TableRow>
+                    ))}
               </TableBody>
             </Table>
             <TableFooter>
               <TableRow>
                 <TablePagination
-                  rowsPerPageOptions={[5, 10, 25]}
+                  rowsPerPageOptions={[5, 10, 25, 50, 100, 500, 1000]}
                   colSpan={3}
-                  count={data.data.length}
+                  count={searchTable().length}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   SelectProps={{
