@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Table from "@material-ui/core/Table";
 import TextField from "@material-ui/core/TextField";
@@ -21,6 +21,7 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import moment from "moment";
+import { AuthContext } from "../../context/AuthContext";
 
 const useStyles = makeStyles((theme) => ({
   table: {
@@ -36,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ViewData(props) {
+  const auth = useContext(AuthContext);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [popUp, setPopUp] = useState(true);
@@ -165,46 +167,54 @@ function ViewData(props) {
             >
               <div
                 style={{
-                  width: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  marginLeft: "30%",
+                  width: "100%",
                 }}
               >
-                <Button
-                  variant="contained"
-                  style={{ backgroundColor: "#fdb900" }}
-                  className={classes.button}
-                >
-                  <CSVLink
-                    data={data.data}
-                    style={{ color: "black", textDecoration: "none" }}
+                {auth.accessIs !== "limited" && (
+                  <div
+                    style={{
+                      width: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      marginLeft: "30%",
+                    }}
                   >
-                    DOWNLOAD CSV
-                  </CSVLink>
-                </Button>
-                <Button
-                  variant="contained"
-                  style={{ backgroundColor: "#fdb900" }}
-                  className={classes.button}
-                  onClick={exportPDF}
-                >
-                  DOWNLOAD PDF
-                </Button>
-                <Button
-                  variant="contained"
-                  style={{ backgroundColor: "#fdb900", color: "black" }}
-                  className={classes.button}
-                >
-                  <ReactHTMLTableToExcel
-                    id="test-table-xls-button"
-                    className="download-table-xls-button"
-                    table="table-to-xls"
-                    filename="tablexls"
-                    sheet="tablexls"
-                    buttonText="DOWNLOAD XLS"
-                  />
-                </Button>
+                    <Button
+                      variant="contained"
+                      style={{ backgroundColor: "#fdb900" }}
+                      className={classes.button}
+                    >
+                      <CSVLink
+                        data={data.data}
+                        style={{ color: "black", textDecoration: "none" }}
+                      >
+                        DOWNLOAD CSV
+                      </CSVLink>
+                    </Button>
+                    <Button
+                      variant="contained"
+                      style={{ backgroundColor: "#fdb900" }}
+                      className={classes.button}
+                      onClick={exportPDF}
+                    >
+                      DOWNLOAD PDF
+                    </Button>
+                    <Button
+                      variant="contained"
+                      style={{ backgroundColor: "#fdb900", color: "black" }}
+                      className={classes.button}
+                    >
+                      <ReactHTMLTableToExcel
+                        id="test-table-xls-button"
+                        className="download-table-xls-button"
+                        table="table-to-xls"
+                        filename="tablexls"
+                        sheet="tablexls"
+                        buttonText="DOWNLOAD XLS"
+                      />
+                    </Button>
+                  </div>
+                )}
               </div>
               {/* <Button
                 variant="contained"
