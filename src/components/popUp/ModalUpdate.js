@@ -16,7 +16,7 @@ function ModalUpdate(props) {
     evt.preventDefault();
     // alert(`Submitting : ${order},${transaction},${amount}`);
     const response = await axios.patch(
-      "http://34.71.25.223:3000/post/updateRecord",
+      "https://validation-bdshop-backend.herokuapp.com/post/updateRecord",
       {
         username: auth.userIs,
         ordernumber: order,

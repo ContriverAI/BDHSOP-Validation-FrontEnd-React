@@ -31,7 +31,7 @@ function UserTable() {
   const [toSearch, setToSearch] = useState("");
 
   const fetchData = async () => {
-    const response = await axios.get("http://34.71.25.223:3000/get/userData");
+    const response = await axios.get("https://validation-bdshop-backend.herokuapp.com/get/userData");
     setData(response);
     setLoading(false);
     // console.log(data);

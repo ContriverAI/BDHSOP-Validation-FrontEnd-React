@@ -15,7 +15,7 @@ function ModalDelete(props) {
 
     const response = await axios({
       method: "delete",
-      url: "http://34.71.25.223:3000/post/deleteRecord",
+      url: "https://validation-bdshop-backend.herokuapp.com/post/deleteRecord",
       data: {
         transactionID: transactionId,
       },

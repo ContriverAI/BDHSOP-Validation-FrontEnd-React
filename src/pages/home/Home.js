@@ -41,7 +41,7 @@ function Home(props) {
     // alert(`Submitting : ${userName},${password}`);
     // setUserName("");
     // setPassword("");
-    const response = await axios.post("http://34.71.25.223:3000/login", {
+    const response = await axios.post("https://validation-bdshop-backend.herokuapp.com/login", {
       username: userName,
       password: password,
     });

@@ -47,7 +47,7 @@ function UpdateUser() {
     evt.preventDefault();
     // alert(`Submitting : ${userName},${password},${access}`);
     const response = await axios.patch(
-      "http://34.71.25.223:3000/post/modifyUser",
+      "https://validation-bdshop-backend.herokuapp.com/post/modifyUser",
       {
         username: userName,
         password: password,

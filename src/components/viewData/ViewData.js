@@ -50,7 +50,7 @@ function ViewData(props) {
   };
 
   const fetchData = async () => {
-    const response = await axios.get("http://34.71.25.223:3000/get/recordData");
+    const response = await axios.get("https://validation-bdshop-backend.herokuapp.com/get/recordData");
     setData(response);
     setLoading(false);
     console.log(data);
